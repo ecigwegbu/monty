@@ -11,14 +11,14 @@ int _mod(void)
 	/* must have at least two nodes */
 	if ((lctl.head == NULL) || (lctl.head->next == NULL))
 	{
-		printf("L%d: can't mod, stack too short\n", lctl.jobNr);
+		fprintf(stderr, "L%d: can't mod, stack too short\n", lctl.jobNr);
 		return (-1);
 	}
 
 	/* check divide by zero error */
 	if (lctl.head->n == 0)
 	{
-		printf("L%d: division by zero\n", lctl.jobNr);
+		fprintf(stderr, "L%d: division by zero\n", lctl.jobNr);
 		return (-1);
 	}
 

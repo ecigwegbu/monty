@@ -10,7 +10,7 @@ int _pint(void)
 		printf("%d\n", lctl.head->n);
 	else
 	{
-		printf("L%d: can't pint, stack empty\n", lctl.jobNr);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", lctl.jobNr);
 		return (-1);
 	}
 

@@ -41,7 +41,7 @@ int push(const int n)
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
-		printf("Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		return (-1);
 	}
 	/* fill in the data */
@@ -85,7 +85,7 @@ int enqueue(const int n)
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
-		printf("Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		return (-1);
 	}
 

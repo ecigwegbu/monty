@@ -14,7 +14,7 @@ int execOpcode(char **args)
 		if ((args[1] == NULL) ||
 			((atoi(args[1]) == 0) && ((args[1][0]) != '0')))
 		{
-			printf("L%d: usage: push integer", lctl.jobNr);
+			fprintf(stderr, "L%d: usage: push integer", lctl.jobNr);
 			return (-1);
 		}
 		return (_push(atoi(args[1])));
@@ -64,7 +64,7 @@ int execOpcode2(char **args)
 	else if (!_strcmp(args[0], "queue"))  /* arg matches this function */
 		return (_queue_mode());
 
-	printf("L%d: unknown instruction %s\n", lctl.jobNr, args[0]);
+	fprintf(stderr, "L%d: unknown instruction %s\n", lctl.jobNr, args[0]);
 	return (-1);
 }
 

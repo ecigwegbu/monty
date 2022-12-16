@@ -10,14 +10,14 @@ int _pchar(void)
 	{
 		if (((lctl.head->n) < 0) || ((lctl.head->n) > 127))
 		{
-			printf("L%d: can't pchar, value out of range\n", lctl.jobNr);
+			fprintf(stderr, "L%d: can't pchar, value out of range\n", lctl.jobNr);
 			return (-1);
 		}
 		printf("%c\n", lctl.head->n);
 	}
 	else
 	{
-		printf("L%d: can't pchar, stack empty\n", lctl.jobNr);
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", lctl.jobNr);
 		return (-1);
 	}
 

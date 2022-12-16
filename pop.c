@@ -10,7 +10,7 @@ int _pop(void)
 
 	if (lctl.head == NULL)	/* empty list case */
 	{
-		printf("L%d: can't pop an empty stack\n", lctl.jobNr);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", lctl.jobNr);
 		return (-1);
 	}
 	if (lctl.head->next)	/* not the only node */

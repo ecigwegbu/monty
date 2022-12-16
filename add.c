@@ -10,7 +10,7 @@ int _add(void)
 	/* must have at least two nodes */
 	if ((lctl.head == NULL) || (lctl.head->next == NULL))
 	{
-		printf("L%d: can't add, stack too short\n", lctl.jobNr);
+		fprintf(stderr, "L%d: can't add, stack too short\n", lctl.jobNr);
 		return (-1);
 	}
 
