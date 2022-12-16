@@ -14,7 +14,7 @@ int execOpcode(char **args)
 		if ((args[1] == NULL) ||
 			((atoi(args[1]) == 0) && ((args[1][0]) != '0')))
 		{
-			fprintf(stderr, "L%d: usage: push integer", lctl.jobNr);
+			fprintf(stderr, "L%d: usage: push integer\n", lctl.jobNr);
 			return (-1);
 		}
 		return (_push(atoi(args[1])));
