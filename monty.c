@@ -1,6 +1,6 @@
 #include "monty.h"
 
-void init_monty(void);
+void init_monty(int argc);
 
 /**
  * main - batch mode for monty byte code interpreter
@@ -16,12 +16,7 @@ int main(int argc, char *argv[])
 	ssize_t userInput = -1;  /* num of chars; -1 is error or EOF (CTRL+D)*/
 	int fd;
 
-	init_monty();
-	if (argc != 2)
-	{
-		printf("USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
+	init_monty(argc);
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 	{
@@ -37,11 +32,16 @@ int main(int argc, char *argv[])
 			break;
 		remCmnt(cmdLine);  /* test */
 		args = parseLine(cmdLine, " \n");  /*debug */
-		if (execOpcode(args) == -1)   /* debug */
+		if (args[0] != NULL)  /* could be null in case of comment */
 		{
-			free(cmdLine);
-			free(args);
-			exit(EXIT_FAILURE);
+			if (execOpcode(args) == -1)   /* debug */
+			{
+
+				free(cmdLine);
+				free(args);
+				_free_list();
+				exit(EXIT_FAILURE);
+			}
 		}
 		free(cmdLine);/*  debug */
 		free(args);  /*debug */
@@ -49,16 +49,24 @@ int main(int argc, char *argv[])
 		buffsz = 0;
 	}
 	free(cmdLine);
+	_free_list();
 	return (0);
 }
 
 /**
  * init_monty - initialise the monty interpreter
+ * @argc: arguments count for main
  */
-void init_monty(void)
+void init_monty(int argc)
 {
 	lctl.jobNr = 0;
 	lctl.mode = 0;
 	lctl.head = NULL;
 	lctl.tail = NULL;
+
+	if (argc != 2)
+	{
+		printf("USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
 }

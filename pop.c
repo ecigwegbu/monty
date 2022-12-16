@@ -2,10 +2,9 @@
 
 /**
  * _pop - delete a node at index 0 in a dbly lked list
- * Return: 1 if it succeeded, -1 if it failed
+ * Return: 0 if it succeeded, -1 if it failed
  */
 int _pop(void)
-/*void pop(stack_t **head, unsigned int index) */
 {
 	stack_t *tmp;
 

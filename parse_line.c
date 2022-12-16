@@ -1,7 +1,7 @@
 #include "monty.h"
 
-#define plBUFFUNIT 8
-#define plBUFFCAP 16
+#define plBUFFUNIT 80
+#define plBUFFCAP 160
 
 void parseMallocCheck(char **tokens);
 /**
@@ -39,16 +39,16 @@ char **parseLine(char *str, char *delim)
 			ptr++;
 		}
 		i++;
-		if (i == buffcap)
-		{
-			buffcap += plBUFFUNIT;
-			tokens = realloc((void *) tokens,
-				sizeof(char *) * buffcap);
-			parseMallocCheck(tokens);
-		}
+		/*if (i == buffcap)*/
+		/*{ */
+		/*	buffcap += plBUFFUNIT; */
+		/*	tokens = realloc((void *) tokens,  */
+		/*		sizeof(char *) * buffcap); */
+		/*	parseMallocCheck(tokens); */
+		/*} */
 	}
-	tokens = realloc((void *) tokens, sizeof(char *) * (i + 1));
-	parseMallocCheck(tokens);
+	/*tokens = realloc((void *) tokens, sizeof(char *) * (i + 1));*/
+	/*parseMallocCheck(tokens);*/
 	return (tokens);
 }
 

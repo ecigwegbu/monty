@@ -3,7 +3,7 @@
 ssize_t nullChecks(char **lineptr, size_t *n, int fd);
 int newlineCheck(char *buff, ssize_t nread, ssize_t *cumread, int fd);
 
-#define STDSIZE ((size_t) 120)
+#define STDSIZE ((size_t) 256)
 
 /**
  * _getline - delimited string input
@@ -63,14 +63,14 @@ ssize_t _getline(char **lineptr, size_t *n, int fd)
 		buffsz -= nread;	/*update buffsz */
 
 		/* enlarge buff so we can read again */
-		if (buffsz < readsz)
-		{
-			/*buff = realloc(buff, buffsz); */
-			*lineptr = realloc(*lineptr, (*n + readsz));
-			buff = *lineptr + cumread;
-			buffsz += readsz;
-			*n += readsz;
-		}
+		/*if (buffsz < readsz)*/
+		/*{*/
+		/*	buff = realloc(buff, buffsz); */
+		/*	*lineptr = realloc(*lineptr, (*n + readsz));*/
+		/*	buff = *lineptr + cumread;*/
+		/*	buffsz += readsz;*/
+		/*	*n += readsz;*/
+		/*}*/
 
 	}
 
@@ -97,13 +97,13 @@ ssize_t nullChecks(char **lineptr, size_t *n, int fd)
 
 	if (*lineptr == NULL)
 	{
-		*lineptr = realloc(*lineptr, sizeof(char) * (120 + 1));
+		*lineptr = malloc(sizeof(char) * (256 + 1));
 		if (!(*lineptr))
 		{
 			perror("_getline");
 			return (-1);
 		}
-		*n = 120;
+		*n = 256;
 	}
 
 	return (0);

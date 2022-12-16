@@ -90,6 +90,7 @@ int _stack_mode(void);
 int _queue_mode(void);
 int _bf_print(void);
 int _bf_add(void);
+void _free_list(void);
 
 /* team library functions */
 size_t _strlen(const char *s);
