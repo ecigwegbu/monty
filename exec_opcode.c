@@ -1,6 +1,7 @@
 #include "monty.h"
 
 int execOpcode2(char **args);
+int is_int(char *str);
 
 /**
  * execOpcode - execute an opcode
@@ -11,8 +12,7 @@ int execOpcode(char **args)
 {
 	if (!_strcmp(args[0], "push"))  /* arg matches this function */
 	{
-		if ((args[1] == NULL) ||
-			((atoi(args[1]) == 0) && ((args[1][0]) != '0')))
+		if ((args[1] == NULL) || !is_int(args[1]))
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", lctl.jobNr);
 			return (-1);
@@ -68,3 +68,25 @@ int execOpcode2(char **args)
 	return (-1);
 }
 
+
+/**
+ * is_int - test if a string is all digits
+ * @str: the string to test
+ * Return: 1 if int or 0 otherwise
+ */
+
+int is_int(char *str)
+{
+	char *ptr = str;
+
+	if (*ptr == '-')
+		ptr++;
+	while (*ptr)
+	{
+		if (!(isdigit(*ptr)))
+			return (0);
+		ptr++;
+	}
+
+	return (1);
+}

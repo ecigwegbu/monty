@@ -11,6 +11,7 @@
 #include <errno.h>
 #include <unistd.h>
 #include <string.h>
+#include <ctype.h>
 
 #define BUFFSIZE 1025
 #define BUFFLEN (BUFFSIZE - 1)
