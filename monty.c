@@ -40,6 +40,7 @@ int main(int argc, char *argv[])
 				free(cmdLine);
 				free(args);
 				_free_list();
+				close(fd); /* debug */
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -50,6 +51,7 @@ int main(int argc, char *argv[])
 	}
 	free(cmdLine);
 	_free_list();
+	close(fd); /* debug */
 	return (0);
 }
 
